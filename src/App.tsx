@@ -722,7 +722,7 @@ function CBCTool() {
       </section>
 <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
    <PDFUpload />
-  
+   
         <div className="print-only mb-6">
           <span className="font-bold text-xl text-slate-900">{LAB_NAME}</span>
           <p className="text-sm text-slate-500">Complete Blood Count (CBC) Report</p>
