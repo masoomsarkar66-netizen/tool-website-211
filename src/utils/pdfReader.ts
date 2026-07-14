@@ -1,27 +1,19 @@
-import * as pdfjsLib from "pdfjs-dist";
-
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
-
 export async function extractPDFText(file: File) {
-  const arrayBuffer = await file.arrayBuffer();
+  const fileSize = (file.size / 1024).toFixed(2);
 
-  const pdf = await pdfjsLib.getDocument({
-    data: arrayBuffer,
-  }).promise;
+  return `
+PDF Upload Successful
 
-  let fullText = "";
+File Name:
+${file.name}
 
-  for (let i = 1; i <= pdf.numPages; i++) {
-    const page = await pdf.getPage(i);
+File Size:
+${fileSize} KB
 
-    const textContent = await page.getTextContent();
+Status:
+PDF received successfully.
 
-    const pageText = textContent.items
-      .map((item: any) => item.str)
-      .join(" ");
-
-    fullText += pageText + "\n";
-  }
-
-  return fullText;
+Note:
+Text extraction will be connected in the next step.
+`;
 }
