@@ -717,11 +717,12 @@ function CBCTool() {
   return (
     <div className="bg-slate-50 min-h-screen">
       <section className="no-print bg-gradient-to-br from-blue-600 via-blue-600 to-teal-600 py-14 px-4 sm:px-6 text-center">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">CBC Report Tool</h1>
+         <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">CBC Report Tool</h1>
         <p className="text-blue-100 max-w-xl mx-auto">Enter your Complete Blood Count (CBC) values to instantly check your blood test results against standard reference ranges.</p>
       </section>
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+<div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+   <PDFUpload />
+  
         <div className="print-only mb-6">
           <span className="font-bold text-xl text-slate-900">{LAB_NAME}</span>
           <p className="text-sm text-slate-500">Complete Blood Count (CBC) Report</p>
