@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import PDFUpload from "./components/PDFUpload";
 import {
   Menu, X, ChevronRight, ChevronLeft, CheckCircle, AlertTriangle, Calendar, Mail,
   Facebook, Instagram, MessageCircle, Printer, Activity, ShieldCheck,
