@@ -1,18 +1,31 @@
 import { useState } from "react";
+import { extractPDFText } from "../utils/pdfReader";
 
 export default function PDFUpload() {
   const [file, setFile] = useState<File | null>(null);
-  const [message, setMessage] = useState("");
+  const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (!file) {
-      setMessage("Please select PDF first");
+      alert("Please select PDF first");
       return;
     }
 
-    console.log("Uploaded File:", file);
+    try {
+      setLoading(true);
+      setResult("");
 
-    setMessage(`PDF selected successfully: ${file.name}`);
+      const text = await extractPDFText(file);
+
+      setResult(text || "No text found in PDF");
+
+    } catch (error) {
+      console.error(error);
+      setResult("Error reading PDF");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -27,7 +40,7 @@ export default function PDFUpload() {
         accept="application/pdf"
         onChange={(e) => {
           setFile(e.target.files?.[0] || null);
-          setMessage("");
+          setResult("");
         }}
         className="block w-full text-sm"
       />
@@ -42,13 +55,17 @@ export default function PDFUpload() {
         onClick={handleUpload}
         className="mt-5 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-semibold"
       >
-        Upload PDF
+        {loading ? "Reading PDF..." : "Upload PDF"}
       </button>
 
-      {message && (
-        <p className="mt-4 text-sm text-green-600 font-medium">
-          {message}
-        </p>
+      {result && (
+        <div className="mt-5 p-4 bg-slate-50 rounded-lg border text-sm text-slate-700 max-h-80 overflow-auto whitespace-pre-wrap">
+          <h3 className="font-bold mb-2">
+            PDF Result:
+          </h3>
+
+          {result}
+        </div>
       )}
 
     </div>
