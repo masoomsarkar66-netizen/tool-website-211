@@ -2,14 +2,17 @@ import { useState } from "react";
 
 export default function PDFUpload() {
   const [file, setFile] = useState<File | null>(null);
+  const [message, setMessage] = useState("");
 
   const handleUpload = () => {
     if (!file) {
-      alert("Please select PDF first");
+      setMessage("Please select PDF first");
       return;
     }
 
-    alert(`Selected file: ${file.name}`);
+    console.log("Uploaded File:", file);
+
+    setMessage(`PDF selected successfully: ${file.name}`);
   };
 
   return (
@@ -22,9 +25,10 @@ export default function PDFUpload() {
       <input
         type="file"
         accept="application/pdf"
-        onChange={(e) =>
-          setFile(e.target.files?.[0] || null)
-        }
+        onChange={(e) => {
+          setFile(e.target.files?.[0] || null);
+          setMessage("");
+        }}
         className="block w-full text-sm"
       />
 
@@ -40,6 +44,12 @@ export default function PDFUpload() {
       >
         Upload PDF
       </button>
+
+      {message && (
+        <p className="mt-4 text-sm text-green-600 font-medium">
+          {message}
+        </p>
+      )}
 
     </div>
   );
