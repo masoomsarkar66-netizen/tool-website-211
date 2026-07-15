@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from "react";
-import { extractPDFText } from "../utils/pdfExtractor";
+import { extractPDFText } from "../utils/pdfreader";
 import { parseCBC } from "../utils/cbcParser";
 
 interface PDFUploadProps {
