@@ -1,7 +1,7 @@
 import {
   referenceRanges,
   getStatus,
-} from "./referenceRange";
+} from "./referenceRanges";
 
 export interface CBCValue {
   name: string;
