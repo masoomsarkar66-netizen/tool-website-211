@@ -721,7 +721,11 @@ function CBCTool() {
         <p className="text-blue-100 max-w-xl mx-auto">Enter your Complete Blood Count (CBC) values to instantly check your blood test results against standard reference ranges.</p>
       </section>
 <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-   <PDFUpload />
+   <PDFUpload
+  onDataExtracted={(parsedData) => {
+    setValues(parsedData);
+  }}
+/>
    
         <div className="print-only mb-6">
           <span className="font-bold text-xl text-slate-900">{LAB_NAME}</span>
