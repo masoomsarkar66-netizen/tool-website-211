@@ -1,40 +1,32 @@
+import {
+  referenceRanges,
+  getStatus,
+} from "./referenceRange";
+
 export interface CBCValue {
-  test: string;
-  value: string;
+  name: string;
+  value: number;
+  status: "Normal" | "High" | "Low" | "Unknown";
 }
 
 export function parseCBC(text: string): CBCValue[] {
-  const tests = [
-    "Hemoglobin",
-    "WBC",
-    "RBC",
-    "Platelets",
-    "Hematocrit",
-    "MCV",
-    "MCH",
-    "MCHC",
-    "RDW",
-    "Neutrophils",
-    "Lymphocytes",
-    "Monocytes",
-    "Eosinophils",
-    "Basophils",
-  ];
-
   const results: CBCValue[] = [];
 
-  tests.forEach((test) => {
+  referenceRanges.forEach((item) => {
     const regex = new RegExp(
-      `${test}\\s*[:\\-]?\\s*([0-9]+(?:\\.[0-9]+)?)`,
+      `${item.name}\\s*[:\\-]?\\s*([0-9]+(?:\\.[0-9]+)?)`,
       "i"
     );
 
     const match = text.match(regex);
 
     if (match) {
+      const value = Number(match[1]);
+
       results.push({
-        test,
-        value: match[1],
+        name: item.name,
+        value,
+        status: getStatus(value, item.min, item.max),
       });
     }
   });
