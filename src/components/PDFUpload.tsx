@@ -1,22 +1,33 @@
-const handleUpload = async () => {
-  if (!file) {
-    alert("Please select PDF first");
-    return;
-  }
+interface PDFUploadProps {
+  onDataExtracted: (data: any) => void;
+}
 
-  try {
-    setLoading(true);
+export default function PDFUpload({ onDataExtracted }: PDFUploadProps) {
+  ...
 
-    const pdfText = await extractPDFText(file);
+  const handleUpload = async () => {
+    if (!file) {
+      alert("Please select PDF first");
+      return;
+    }
 
-    const parsedData = parseCBCReport(pdfText);
+    try {
+      setLoading(true);
 
-    setCbcData(parsedData);
+      const pdfText = await extractPDFText(file);
 
-  } catch (err) {
-    console.error(err);
-    alert("Unable to read PDF");
-  } finally {
-    setLoading(false);
-  }
-};
+      const parsedData = parseCBCReport(pdfText);
+
+      // CBC Tool ko data bhej do
+      onDataExtracted(parsedData);
+
+    } catch (err) {
+      console.error(err);
+      alert("Unable to read PDF");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  ...
+}
