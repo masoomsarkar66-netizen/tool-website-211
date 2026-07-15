@@ -1,9 +1,7 @@
 interface PDFUploadProps {
   onDataExtracted: (data: any) => void;
 }
-
 export default function PDFUpload({ onDataExtracted }: PDFUploadProps) {
-  ...
 
   const handleUpload = async () => {
     if (!file) {
