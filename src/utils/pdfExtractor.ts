@@ -5,35 +5,52 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url
 ).toString();
 
-export async function extractPDFText(
-  file: File
-): Promise<string> {
-  try {
-    const arrayBuffer = await file.arrayBuffer();
+export async function extractPDFText(file: File): Promise<string> {
+  console.log("===== extractPDFText() START =====");
 
-    const pdf = await pdfjsLib.getDocument({
+  try {
+    console.log("File Name:", file.name);
+    console.log("File Size:", file.size);
+
+    const arrayBuffer = await file.arrayBuffer();
+    console.log("ArrayBuffer Loaded");
+
+    const loadingTask = pdfjsLib.getDocument({
       data: arrayBuffer,
-    }).promise;
+    });
+
+    console.log("Loading PDF...");
+
+    const pdf = await loadingTask.promise;
+
+    console.log("PDF Loaded Successfully");
+    console.log("Total Pages:", pdf.numPages);
 
     let fullText = "";
 
     for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+      console.log(`Reading Page ${pageNumber}`);
+
       const page = await pdf.getPage(pageNumber);
 
       const textContent = await page.getTextContent();
 
       const pageText = textContent.items
-        .map((item: any) => item.str)
+        .map((item: any) => ("str" in item ? item.str : ""))
         .join(" ");
+
+      console.log(`Page ${pageNumber}:`, pageText);
 
       fullText += pageText + "\n";
     }
 
+    console.log("========== FINAL PDF TEXT ==========");
+    console.log(fullText);
+    console.log("====================================");
+
     return fullText.trim();
   } catch (error) {
     console.error("PDF Extraction Error:", error);
-    throw new Error("Unable to extract text from PDF.");
+    throw error;
   }
 }
-
- 
