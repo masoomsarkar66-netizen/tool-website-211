@@ -116,7 +116,7 @@ export default function PDFUpload({
           </div>
 
           <p className="mt-2 text-sm text-gray-600">
-            Extracting CBC report...
+            Extracting CBC report
           </p>
 
         </div>
@@ -133,7 +133,7 @@ export default function PDFUpload({
         disabled={!selectedFile || loading}
         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg disabled:bg-gray-400"
       >
-        {loading ? "Processing..." : "Extract CBC Data"}
+        {loading ? "Processing" : "Extract CBC Data"}
       </button>
 
     </div>
