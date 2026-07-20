@@ -724,7 +724,78 @@ function CBCTool() {
   
   <PDFUpload
   onDataExtracted={(parsedData) => {
-    setValues(parsedData);
+
+    const mappedValues: any = {};
+
+    parsedData.forEach((item: any) => {
+
+      switch (item.name) {
+
+        case "Hemoglobin":
+          mappedValues.hb = item.value;
+          break;
+
+        case "WBC":
+          mappedValues.wbc = item.value;
+          break;
+
+        case "RBC":
+          mappedValues.rbc = item.value;
+          break;
+
+        case "Hematocrit":
+          mappedValues.hct = item.value;
+          break;
+
+        case "MCV":
+          mappedValues.mcv = item.value;
+          break;
+
+        case "MCH":
+          mappedValues.mch = item.value;
+          break;
+
+        case "MCHC":
+          mappedValues.mchc = item.value;
+          break;
+
+        case "RDW":
+          mappedValues.rdw = item.value;
+          break;
+
+        case "Platelets":
+          mappedValues.plt = item.value;
+          break;
+
+        case "Neutrophils":
+          mappedValues.neut = item.value;
+          break;
+
+        case "Lymphocytes":
+          mappedValues.lymph = item.value;
+          break;
+
+        case "Monocytes":
+          mappedValues.mono = item.value;
+          break;
+
+        case "Eosinophils":
+          mappedValues.eos = item.value;
+          break;
+
+        case "Basophils":
+          mappedValues.baso = item.value;
+          break;
+
+      }
+
+    });
+
+    console.log(parsedData);
+    console.log(mappedValues);
+
+    setValues(mappedValues);
+
   }}
 />
    
