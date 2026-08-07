@@ -16,7 +16,7 @@ export const BLOG_CATS = [
  *  dateISO   – "YYYY-MM-DD" (used for sorting "most recent")
  *  date      – display string, e.g. "Jun 2, 2026"
  *  author    – usually "Lab Content Team"
- *  reviewer  – your real medical reviewer, e.g. "Dr. Jane Smith, MBBS"
+ *  reviewer  – your real medical reviewer, e.g. "Dr Jane Smith, MBBS"
  *  excerpt   – one-sentence summary used on cards
  *  image     – { filename, alt, width, height } — add a real `src` once you
  *               have a licensed WebP photo, and it will render automatically
@@ -42,7 +42,7 @@ Each value on your report sits next to a reference range — the typical range s
 That's why a CBC is best read together with your symptoms and history, with help from a qualified doctor, rather than on its own.`
   },
   {
-    id: 2, cat: "Blood Health", title: "What Causes Low Hemoglobin?",
+    id: 2, cat: "Blood Health", title: "What Causes Low Haemoglobin?",
     dateISO: "2026-05-12", date: "May 12, 2026",
     author: "Lab Content Team", reviewer: "Dr. [Name], [Qualification]",
     excerpt: "Understanding the general factors that can contribute to lower hemoglobin levels.",
@@ -53,12 +53,12 @@ There are many possible general contributors, including not getting enough iron 
 
 Symptoms can include feeling unusually tired, looking pale, or getting short of breath more easily — though many people with mildly low levels notice nothing at all.
 
-Because the underlying cause varies so widely from person to person, low hemoglobin on a report is a starting point for a conversation with your doctor, not a diagnosis on its own.`
+Because the underlying cause varies so widely from person to person, low haemoglobin on a report is a starting point for a conversation with your doctor, not a diagnosis on its own.`
   },
   {
-    id: 3, cat: "Test Guides", title: "How to Prepare for a Fasting Blood Test",
+    id: 3, cat: "Patient Education", title: "How to Prepare for a Fasting Blood Test",
     dateISO: "2026-04-30", date: "Apr 30, 2026",
-    author: "Lab Content Team", reviewer: "Dr. [Name], [Qualification]",
+    author: "Lab Content Team", reviewer: "Dr. [Rizvi], [Bachelors]",
     excerpt: "Simple tips to help you get ready for a fasting blood draw.",
     image: { filename: "fasting-blood-test-preparation.webp", alt: "Patient preparing for a fasting blood test at a diagnostic lab", width: 800, height: 500 },
     content: `Some blood tests work best when you've fasted beforehand. Here's what that usually involves.
@@ -67,12 +67,12 @@ Most fasting tests ask for around 8 to 12 hours without food, though plain water
 
 Unless your doctor tells you otherwise, it's generally fine to keep taking your regular medications. Try to avoid intense exercise and excess caffeine the morning of your test, as both can temporarily affect certain results.
 
-Wearing a short-sleeved or loose-sleeved top makes sample collection quicker and more comfortable. If you're ever unsure whether your test requires fasting, just check with our team when you book.`
+Wearing a short-sleeved or loose-sleeved top makes sample collection quicker and more comfortable. If you're ever unsure whether your test requires fasting, check with our team when you book.`
   },
   {
-    id: 4, cat: "Test Guides", title: "CBC vs. Metabolic Panel: What's the Difference?",
+    id: 4, cat: "Patient Education", title: "CBC vs. Metabolic Panel: What's the Difference?",
     dateISO: "2026-04-18", date: "Apr 18, 2026",
-    author: "Lab Content Team", reviewer: "Dr. [Name], [Qualification]",
+    author: "Lab Content Team", reviewer: "Dr. [Rizvi], [Bachelors]".
     excerpt: "Two common tests, two different jobs — here's how they compare.",
     image: { filename: "cbc-vs-metabolic-panel-lab.webp", alt: "Laboratory equipment used for blood panel testing", width: 800, height: 500 },
     content: `Two of the most commonly ordered lab tests are the Complete Blood Count (CBC) and the metabolic panel — and it's easy to mix them up.
