@@ -72,7 +72,7 @@ Wearing a short-sleeved or loose-sleeved top makes sample collection quicker and
   {
     id: 4, cat: "Patient Education", title: "CBC vs. Metabolic Panel: What's the Difference?",
     dateISO: "2026-04-18", date: "Apr 18, 2026",
-    author: "Lab Content Team", reviewer: "Dr. [Rizvi], [Bachelors]".
+    author: "Lab Content Team", reviewer: "Dr. [Rizvi], [Bachelors]",
     excerpt: "Two common tests, two different jobs — here's how they compare.",
     image: { filename: "cbc-vs-metabolic-panel-lab.webp", alt: "Laboratory equipment used for blood panel testing", width: 800, height: 500 },
     content: `Two of the most commonly ordered lab tests are the Complete Blood Count (CBC) and the metabolic panel — and it's easy to mix them up.
