@@ -1692,36 +1692,363 @@ function AboutPage() {
     title: `About Us | ${LAB_NAME}`,
     description: `Learn about ${LAB_NAME} — our mission, our certified medical laboratory team, and our commitment to accurate, accessible diagnostic testing.`,
   });
+
+  const values = [
+    {
+      icon: ShieldCheck,
+      title: "Accuracy First",
+      description:
+        "We focus on reliable laboratory testing and clear reporting so patients can better understand their health information.",
+    },
+    {
+      icon: Microscope,
+      title: "Laboratory Expertise",
+      description:
+        "Our approach combines professional laboratory knowledge with modern digital tools for a better patient experience.",
+    },
+    {
+      icon: Heart,
+      title: "Patient Focused",
+      description:
+        "We believe diagnostic information should be easier to access, understand, and discuss with a qualified healthcare professional.",
+    },
+  ];
+
+  const team = [
+    {
+      initials: "DR",
+      name: "[Doctor / Pathologist Name]",
+      qualification: "[Qualification, e.g. MBBS, FCPS]",
+      role: "Medical & Laboratory Specialist",
+    },
+    {
+      initials: "ML",
+      name: "[Medical Laboratory Technologist]",
+      qualification: "[Qualification, e.g. BS MLT]",
+      role: "Laboratory Technology Specialist",
+    },
+    {
+      initials: "AI",
+      name: "[Healthcare Technology Specialist]",
+      qualification: "[Qualification / Experience]",
+      role: "Healthcare Data & Technology",
+    },
+  ];
+
   return (
-    <div>
-      <section className="relative h-64 sm:h-80 overflow-hidden">
-        <LabImage filename="meridian-health-labs-team.webp" alt="Meridian Health Labs diagnostic laboratory team and facility" width={1200} height={500} className="absolute inset-0 w-full h-full object-cover rounded-none border-0" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 max-w-6xl mx-auto px-4 sm:px-6 pb-8">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white">About {LAB_NAME}</h1>
-        </div>
-      </section>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-14 space-y-10">
-        <div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-3">Our Mission</h2>
-          <p className="text-slate-600 leading-relaxed">We believe understanding your health shouldn't be complicated. {LAB_NAME} combines accurate, accredited medical laboratory services with tools that help patients actually understand their results — not just receive a printout full of numbers.</p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Our Team</h2>
-          <div className="grid sm:grid-cols-3 gap-5">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 text-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 mx-auto mb-3 flex items-center justify-center text-white font-bold">DR</div>
-                <div className="font-semibold text-slate-800 text-sm">[Doctor / Pathologist Name]</div>
-                <div className="text-xs text-slate-400">[Qualification, e.g. MBBS, FCPS]</div>
+    <div className="bg-white text-slate-900">
+
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 py-24 sm:py-32">
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-teal-500/15 blur-3xl" />
+
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="max-w-3xl">
+
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-blue-100 backdrop-blur-md mb-7">
+              <ShieldCheck className="w-4 h-4 text-teal-300" />
+              Trusted Diagnostic Healthcare
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+              About{" "}
+              <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-teal-300 bg-clip-text text-transparent">
+                {LAB_NAME}
+              </span>
+            </h1>
+
+            <p className="mt-6 text-lg sm:text-xl leading-8 text-slate-300 max-w-2xl">
+              Making laboratory information easier to access, understand,
+              and use — while keeping accuracy and patient trust at the center.
+            </p>
+
+            <div className="flex flex-wrap gap-4 mt-9">
+              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md">
+                <CheckCircle className="w-5 h-5 text-emerald-400" />
+                <span className="text-sm text-slate-200">
+                  Accurate Testing
+                </span>
               </div>
-            ))}
+
+              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md">
+                <Lock className="w-5 h-5 text-blue-400" />
+                <span className="text-sm text-slate-200">
+                  Patient Focused
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-md">
+                <Activity className="w-5 h-5 text-teal-400" />
+                <span className="text-sm text-slate-200">
+                  Modern Healthcare
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* MISSION */}
+      <section className="py-20 sm:py-24 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+            <div>
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
+                <span className="w-8 h-px bg-blue-600" />
+                Our Mission
+              </span>
+
+              <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+                Better understanding.
+                <br />
+                <span className="text-blue-600">Better health decisions.</span>
+              </h2>
+
+              <p className="mt-6 text-slate-600 leading-8 text-base sm:text-lg">
+                We believe understanding your health shouldn't be
+                complicated. {LAB_NAME} combines accurate medical laboratory
+                services with modern digital tools that make laboratory
+                information easier to understand.
+              </p>
+
+              <p className="mt-4 text-slate-600 leading-8">
+                Instead of simply receiving a report filled with numbers,
+                patients should be able to understand what those numbers
+                represent and know when they should discuss their results with
+                a qualified healthcare professional.
+              </p>
+
+              <div className="mt-8 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center">
+                  <FileCheck className="w-6 h-6 text-blue-600" />
+                </div>
+
+                <div>
+                  <p className="font-semibold text-slate-900">
+                    Clear diagnostic information
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    Designed around patient understanding
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* MISSION VISUAL */}
+            <div className="relative">
+
+              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-blue-500/10 to-teal-500/10 blur-2xl" />
+
+              <div className="relative rounded-[2rem] bg-white border border-slate-200 shadow-xl p-7 sm:p-9">
+
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                      Our Approach
+                    </p>
+                    <h3 className="text-xl font-bold text-slate-900 mt-1">
+                      From Report to Understanding
+                    </h3>
+                  </div>
+
+                  <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center">
+                    <Microscope className="w-5 h-5 text-blue-600" />
+                  </div>
+                </div>
+
+                <div className="space-y-5">
+
+                  {[
+                    ["01", "Accurate Testing", "Reliable laboratory information"],
+                    ["02", "Clear Reporting", "Information presented clearly"],
+                    ["03", "Patient Understanding", "Simple explanations of results"],
+                  ].map(([number, title, description]) => (
+                    <div
+                      key={number}
+                      className="flex gap-4 items-start p-4 rounded-2xl bg-slate-50 border border-slate-100"
+                    >
+                      <div className="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-xs font-bold text-blue-600">
+                        {number}
+                      </div>
+
+                      <div>
+                        <h4 className="font-semibold text-slate-900">
+                          {title}
+                        </h4>
+                        <p className="text-sm text-slate-500 mt-1">
+                          {description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* VALUES */}
+      <section className="py-20 sm:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
+              What We Stand For
+            </span>
+
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+              Built around trust and clarity
+            </h2>
+
+            <p className="mt-4 text-slate-500 leading-7">
+              Every part of our service is designed to make the diagnostic
+              experience more reliable, understandable, and patient-friendly.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+
+            {values.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={item.title}
+                  className="group rounded-3xl border border-slate-200 bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${
+                      index === 0
+                        ? "bg-blue-50 text-blue-600"
+                        : index === 1
+                        ? "bg-violet-50 text-violet-600"
+                        : "bg-teal-50 text-teal-600"
+                    }`}
+                  >
+                    <Icon className="w-6 h-6" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-slate-900">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-7 text-slate-500">
+                    {item.description}
+                  </p>
+
+                  <div className="mt-6 h-1 w-10 rounded-full bg-slate-200 group-hover:w-16 transition-all duration-300" />
+                </div>
+              );
+            })}
+
+          </div>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section className="py-20 sm:py-24 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
+                Our Team
+              </span>
+
+              <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+                Experienced people behind the service
+              </h2>
+            </div>
+
+            <p className="max-w-xl text-slate-500 leading-7">
+              Our multidisciplinary approach brings together medical,
+              laboratory, and healthcare technology expertise.
+            </p>
+
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+
+            {team.map((member) => (
+              <div
+                key={member.name}
+                className="group bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+
+                <div className="h-2 bg-gradient-to-r from-blue-600 via-violet-600 to-teal-500" />
+
+                <div className="p-7">
+
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center text-white text-xl font-bold shadow-lg mb-6">
+                    {member.initials}
+                  </div>
+
+                  <p className="text-xs uppercase tracking-wider font-semibold text-blue-600">
+                    {member.role}
+                  </p>
+
+                  <h3 className="text-xl font-bold text-slate-900 mt-2">
+                    {member.name}
+                  </h3>
+
+                  <p className="text-sm text-slate-500 mt-2">
+                    {member.qualification}
+                  </p>
+
+                  <div className="mt-6 pt-5 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400">
+                    <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                    Professional Healthcare Team
+                  </div>
+
+                </div>
+              </div>
+            ))}
+
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-blue-700 via-violet-700 to-teal-600 px-7 py-14 sm:px-12 text-center shadow-2xl">
+
+            <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-white/10 blur-3xl" />
+
+            <div className="relative">
+
+              <div className="mx-auto w-14 h-14 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center mb-6">
+                <Activity className="w-7 h-7 text-white" />
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">
+                Your health information should be easier to understand.
+              </h2>
+
+              <p className="mt-4 text-white/75 max-w-2xl mx-auto leading-7">
+                Explore our diagnostic services and use our CBC report tool
+                to better understand your laboratory results.
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
     </div>
   );
 }
+
 
 function FAQPage() {
   useSEO({
