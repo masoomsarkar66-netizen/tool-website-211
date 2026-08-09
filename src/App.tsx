@@ -388,202 +388,926 @@ function NavBar({ page, navigate, menuOpen, setMenuOpen }) {
 
 function HomePage({ navigate }) {
   useSEO({
-    title: `${LAB_NAME} | CBC Report Checker & Diagnostic Lab Services`,
-    description: "Check your Complete Blood Count (CBC) report online, understand your blood test results, and explore diagnostic laboratory services at Meridian Health Labs.",
+    title: `${LAB_NAME} | AI-Powered CBC Report Analyzer`,
+    description:
+      "Understand your CBC blood test report in simple language. Upload your report, review key blood parameters, and explore diagnostic laboratory services.",
   });
-  const recentPosts = [...BLOG_POSTS].sort((a, b) => new Date(b.dateISO) - new Date(a.dateISO)).slice(0, 3);
+
+  const recentPosts = [...BLOG_POSTS]
+    .sort((a, b) => new Date(b.dateISO) - new Date(a.dateISO))
+    .slice(0, 3);
+
   const cbcService = SERVICES.find((s) => s.cbc);
   const otherServices = SERVICES.filter((s) => !s.cbc);
+
   const spotRef = useRef(null);
+
   const handleHeroMove = (e) => {
     if (!spotRef.current) return;
+
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    spotRef.current.style.background = `radial-gradient(550px circle at ${x}px ${y}px, rgba(37,99,235,0.16), transparent 60%)`;
+
+    spotRef.current.style.background = `radial-gradient(
+      500px circle at ${x}px ${y}px,
+      rgba(59,130,246,0.14),
+      transparent 65%
+    )`;
   };
 
   return (
-    <div>
-      <section onMouseMove={handleHeroMove} className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-teal-50 pt-16 pb-28 sm:pt-20 sm:pb-36">
-        <div ref={spotRef} className="absolute inset-0 pointer-events-none transition-[background] duration-300" />
-        <div className="absolute -top-32 -right-32 w-96 h-96 bg-teal-200 rounded-full opacity-30 blur-3xl pointer-events-none" />
-        <div className="absolute top-60 -left-32 w-80 h-80 bg-blue-200 rounded-full opacity-30 blur-3xl pointer-events-none" />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <div className="bg-white text-slate-900 overflow-hidden">
+
+      {/* =========================================================
+          HERO
+      ========================================================= */}
+      <section
+        onMouseMove={handleHeroMove}
+        className="relative overflow-hidden bg-slate-950 text-white"
+      >
+        <div
+          ref={spotRef}
+          className="absolute inset-0 pointer-events-none transition-[background] duration-300"
+        />
+
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
+
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 lg:gap-20 items-center">
+
+            {/* LEFT */}
             <div>
-              <span className="inline-flex items-center gap-2 bg-white text-blue-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 shadow-sm border border-blue-100">
-                <ShieldCheck className="w-3.5 h-3.5" /> Certified Diagnostic Laboratory
-              </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.1] mb-6">
-                Your CBC Report,<br />
-                <span className="bg-gradient-to-r from-blue-600 via-violet-600 to-teal-500 bg-clip-text text-transparent animate-gradient-text">Clear &amp; Simple</span>
+
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur mb-7">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-xs sm:text-sm font-medium text-slate-300">
+                  Smart CBC Report Analysis
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.02] mb-7">
+                Your Blood Report.
+                <br />
+                <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
+                  Finally Explained.
+                </span>
               </h1>
-              <p className="text-lg text-slate-600 max-w-lg mb-8">{TAGLINE} View, understand, and download your Complete Blood Count (CBC) report online — anytime, anywhere.</p>
-              <button onClick={() => navigate("cbc")} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-all hover:scale-105 inline-flex items-center justify-center gap-2">
-                Check Your Report <ArrowRight className="w-4 h-4" />
-              </button>
-              <div className="flex items-center gap-6 mt-10 text-sm">
-                <span className="font-bold text-slate-800">12+ <span className="font-normal text-slate-500">years</span></span>
-                <span className="w-px h-4 bg-slate-300" />
-                <span className="font-bold text-slate-800">50,000+ <span className="font-normal text-slate-500">patients</span></span>
-                <span className="w-px h-4 bg-slate-300" />
-                <span className="font-bold text-slate-800">24h <span className="font-normal text-slate-500">turnaround</span></span>
-              </div>
-            </div>
-            <div className="relative h-80 sm:h-96 hidden sm:block">
-              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-blue-600 via-violet-500 to-teal-400 shadow-2xl overflow-hidden">
-                <div className="absolute w-24 h-24 bg-white/15 rounded-full top-8 left-8 animate-float-slow" />
-                <div className="absolute w-16 h-16 bg-white/20 rounded-full bottom-14 right-14 animate-float" />
-                <div className="absolute w-10 h-10 bg-amber-300/40 rounded-full top-1/2 left-1/3 animate-float-slow" />
-                <div className="absolute w-8 h-8 bg-rose-300/40 rounded-full top-16 right-1/3 animate-float" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur rounded-2xl shadow-xl p-4 w-48 border border-white">
-                <div className="flex items-center gap-2 mb-1">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span className="text-xs font-semibold text-slate-700">Hemoglobin</span>
-                </div>
-                <div className="text-lg font-bold text-slate-900">14.2 g/dL</div>
-                <div className="text-xs text-green-600 font-medium">Within normal range</div>
-              </div>
-              <div className="absolute -top-6 -right-4 bg-white/95 backdrop-blur rounded-2xl shadow-xl p-4 w-40 border border-white">
-                <div className="text-xs text-slate-500 mb-1">Report Ready</div>
-                <div className="text-sm font-bold text-blue-600">Today, 10:42 AM</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
-          <svg viewBox="0 0 1440 80" className="w-full h-14 sm:h-20 block" preserveAspectRatio="none">
-            <path fill="#f8fafc" d="M0,32 C240,76 480,4 720,28 C960,52 1200,76 1440,28 L1440,80 L0,80 Z" />
-          </svg>
-        </div>
-      </section>
 
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">What We Offer</span>
-            <h2 className="text-3xl font-bold text-slate-900 mt-2 mb-3">Our Diagnostic Laboratory Services</h2>
-            <p className="text-slate-500">Comprehensive blood testing and analysis across all major health categories.</p>
-          </div>
-          <div className="space-y-6">
-            <Reveal>
-              <button onClick={() => navigate("service", cbcService.slug)} className="w-full text-left relative overflow-hidden rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-blue-600 via-violet-600 to-teal-500 text-white group hover:shadow-2xl transition-shadow duration-300">
-                <div className="absolute -right-12 -top-12 w-56 h-56 bg-white/10 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500" />
-                <div className="relative flex flex-col sm:flex-row sm:items-center gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-white/15 flex items-center justify-center flex-shrink-0">
-                    <Droplet className="w-8 h-8" />
-                  </div>
-                  <div className="flex-1">
-                    <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded-full uppercase tracking-wide">Featured</span>
-                    <h3 className="text-2xl font-bold mt-2 mb-1">{cbcService.name}</h3>
-                    <p className="text-white/80 max-w-xl">{cbcService.desc}</p>
-                  </div>
-                  <span className="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-5 py-2.5 rounded-full self-start sm:self-center whitespace-nowrap group-hover:gap-3 transition-all">
-                    Learn more <ChevronRight className="w-4 h-4" />
-                  </span>
-                </div>
-              </button>
-            </Reveal>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherServices.map((s, i) => {
-                const Icon = s.icon;
-                const accent = ACCENTS[i % ACCENTS.length];
-                return (
-                  <Reveal key={s.slug} delay={i * 60}>
-                    <TiltCard>
-                      <button onClick={() => navigate("service", s.slug)} className="text-left w-full h-full relative bg-white rounded-2xl p-6 pt-8 shadow-sm hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-slate-100">
-                        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accent.grad}`} />
-                        <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${accent.grad} flex items-center justify-center mb-4 shadow-md`}>
-                          <Icon className="w-6 h-6 text-white" />
+              <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-2xl mb-9">
+                Upload your CBC report and understand important blood
+                parameters in clear, simple language — without getting lost
+                in medical terminology.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+
+                <button
+                  onClick={() => navigate("cbc")}
+                  className="group inline-flex items-center justify-center gap-3 bg-white text-slate-950 font-bold px-7 py-4 rounded-2xl hover:bg-blue-50 transition-all shadow-xl shadow-black/20"
+                >
+                  Analyze My CBC
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+
+                <button
+                  onClick={() => navigate("about")}
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 text-white font-semibold transition-all"
+                >
+                  How It Works
+                </button>
+
+              </div>
+
+              <div className="flex flex-wrap gap-x-7 gap-y-3 mt-10 text-sm text-slate-400">
+
+                <span className="inline-flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  Easy to understand
+                </span>
+
+                <span className="inline-flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-blue-400" />
+                  Privacy focused
+                </span>
+
+                <span className="inline-flex items-center gap-2">
+                  <FileCheck className="w-4 h-4 text-cyan-400" />
+                  Report-friendly
+                </span>
+
+              </div>
+
+            </div>
+
+            {/* RIGHT — PREMIUM REPORT CARD */}
+            <div className="relative">
+
+              <div className="absolute -inset-6 bg-gradient-to-r from-blue-500/20 via-violet-500/10 to-teal-400/20 blur-3xl" />
+
+              <div className="relative rounded-[2rem] border border-white/10 bg-white/[0.07] backdrop-blur-xl p-4 sm:p-5 shadow-2xl">
+
+                <div className="rounded-[1.5rem] bg-white text-slate-900 overflow-hidden">
+
+                  {/* Report Header */}
+                  <div className="p-5 sm:p-6 border-b border-slate-100">
+
+                    <div className="flex items-center justify-between mb-5">
+
+                      <div className="flex items-center gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-blue-600 flex items-center justify-center">
+                          <Droplet className="w-5 h-5 text-white" />
                         </div>
-                        <h3 className="font-semibold text-slate-800 mb-2">{s.name}</h3>
-                        <p className="text-sm text-slate-500 mb-3">{s.desc}</p>
-                        <span className={`text-sm font-medium inline-flex items-center gap-1 ${accent.text}`}>
-                          Learn more <ChevronRight className="w-3.5 h-3.5" />
-                        </span>
-                      </button>
-                    </TiltCard>
-                  </Reveal>
-                );
-              })}
+
+                        <div>
+                          <p className="text-sm font-bold">CBC Report</p>
+                          <p className="text-xs text-slate-400">
+                            Complete Blood Count
+                          </p>
+                        </div>
+                      </div>
+
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full">
+                        <CheckCircle className="w-3.5 h-3.5" />
+                        Analyzed
+                      </span>
+
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+
+                      <div className="rounded-xl bg-slate-50 p-4">
+                        <p className="text-xs text-slate-400 mb-1">
+                          Hemoglobin
+                        </p>
+                        <p className="text-xl font-bold">14.2</p>
+                        <p className="text-xs text-slate-400">g/dL</p>
+                      </div>
+
+                      <div className="rounded-xl bg-slate-50 p-4">
+                        <p className="text-xs text-slate-400 mb-1">
+                          WBC Count
+                        </p>
+                        <p className="text-xl font-bold">7.8</p>
+                        <p className="text-xs text-slate-400">×10⁹/L</p>
+                      </div>
+
+                      <div className="rounded-xl bg-slate-50 p-4">
+                        <p className="text-xs text-slate-400 mb-1">
+                          Platelets
+                        </p>
+                        <p className="text-xl font-bold">245</p>
+                        <p className="text-xs text-slate-400">×10⁹/L</p>
+                      </div>
+
+                      <div className="rounded-xl bg-slate-50 p-4">
+                        <p className="text-xs text-slate-400 mb-1">
+                          Hematocrit
+                        </p>
+                        <p className="text-xl font-bold">42.1</p>
+                        <p className="text-xs text-slate-400">%</p>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  {/* AI SUMMARY */}
+                  <div className="p-5 sm:p-6">
+
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center">
+                        <Activity className="w-4 h-4 text-blue-600" />
+                      </div>
+
+                      <span className="text-sm font-bold">
+                        Quick Summary
+                      </span>
+                    </div>
+
+                    <p className="text-sm leading-relaxed text-slate-500">
+                      Your displayed CBC values are within the example
+                      reference ranges. Always compare results with the
+                      reference range printed on your own laboratory report.
+                    </p>
+
+                    <div className="mt-5 h-2 rounded-full bg-slate-100 overflow-hidden">
+                      <div className="h-full w-[82%] rounded-full bg-gradient-to-r from-blue-500 to-teal-400" />
+                    </div>
+
+                    <div className="flex justify-between mt-2 text-[11px] text-slate-400">
+                      <span>Report processed</span>
+                      <span>82% example view</span>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Floating Security Card */}
+              <div className="absolute -left-5 bottom-8 hidden sm:flex items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-xl border border-slate-100">
+                <div className="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center">
+                  <Lock className="w-4 h-4 text-emerald-600" />
+                </div>
+
+                <div>
+                  <p className="text-xs font-bold text-slate-800">
+                    Privacy First
+                  </p>
+                  <p className="text-[11px] text-slate-400">
+                    Designed for sensitive reports
+                  </p>
+                </div>
+              </div>
+
             </div>
+
           </div>
         </div>
       </section>
 
-      <section className="py-20 max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-14">
-          <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">Simple Process</span>
-          <h2 className="text-3xl font-bold text-slate-900 mt-2 mb-3">How It Works</h2>
-          <p className="text-slate-500">From booking to results, in four simple steps.</p>
+
+      {/* =========================================================
+          TRUST BAR
+      ========================================================= */}
+      <section className="border-b border-slate-100 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                <FileText className="w-5 h-5 text-blue-600" />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900">CBC Focused</p>
+                <p className="text-xs text-slate-400">Easy report review</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
+                <ShieldCheck className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900">Privacy Focused</p>
+                <p className="text-xs text-slate-400">Sensitive data matters</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-violet-50 flex items-center justify-center">
+                <Activity className="w-5 h-5 text-violet-600" />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900">Clear Insights</p>
+                <p className="text-xs text-slate-400">Plain-language results</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
+                <Stethoscope className="w-5 h-5 text-amber-600" />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900">Educational</p>
+                <p className="text-xs text-slate-400">Not a diagnosis</p>
+              </div>
+            </div>
+
+          </div>
+
         </div>
-        <div className="relative">
-          <div className="hidden lg:block absolute top-8 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-blue-300 via-violet-300 to-teal-400" />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-            {STEPS.map((s, i) => {
+      </section>
+
+
+      {/* =========================================================
+          CBC ANALYZER FEATURE
+      ========================================================= */}
+      <section className="py-24 bg-slate-50">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="grid lg:grid-cols-2 gap-14 items-center">
+
+            <Reveal>
+
+              <div>
+
+                <span className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-[0.18em]">
+                  <span className="w-7 h-px bg-blue-600" />
+                  CBC Report Analyzer
+                </span>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 mt-4 leading-tight">
+                  Turn complicated
+                  <span className="text-blue-600"> CBC numbers </span>
+                  into understandable information.
+                </h2>
+
+                <p className="text-slate-500 text-lg leading-relaxed mt-6 max-w-xl">
+                  A CBC contains multiple parameters that can be difficult to
+                  understand. Our tool is designed to organize the information
+                  and explain what each measurement represents.
+                </p>
+
+                <div className="space-y-4 mt-8">
+
+                  {[
+                    {
+                      icon: Search,
+                      title: "Review key parameters",
+                      text: "Understand common CBC measurements and their units.",
+                    },
+                    {
+                      icon: Activity,
+                      title: "See reference context",
+                      text: "Compare values with the ranges provided for the report.",
+                    },
+                    {
+                      icon: FileCheck,
+                      title: "Get a cleaner overview",
+                      text: "Move from scattered numbers to a simple report view.",
+                    },
+                  ].map((item, index) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <div key={index} className="flex gap-4">
+
+                        <div className="w-11 h-11 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-5 h-5 text-blue-600" />
+                        </div>
+
+                        <div>
+                          <h3 className="font-bold text-slate-800">
+                            {item.title}
+                          </h3>
+                          <p className="text-sm text-slate-500 mt-1">
+                            {item.text}
+                          </p>
+                        </div>
+
+                      </div>
+                    );
+                  })}
+
+                </div>
+
+                <button
+                  onClick={() => navigate("cbc")}
+                  className="mt-9 inline-flex items-center gap-2 bg-slate-900 hover:bg-blue-600 text-white font-semibold px-6 py-3.5 rounded-xl transition-all"
+                >
+                  Open CBC Analyzer
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+              </div>
+
+            </Reveal>
+
+
+            {/* Visual */}
+            <Reveal delay={120}>
+
+              <div className="relative">
+
+                <div className="absolute -inset-5 bg-blue-100/60 rounded-[2rem] blur-2xl" />
+
+                <div className="relative bg-white rounded-[2rem] border border-slate-200 shadow-xl p-5 sm:p-7">
+
+                  <div className="flex items-center justify-between mb-7">
+
+                    <div>
+                      <p className="text-xs text-slate-400 uppercase tracking-wider">
+                        CBC Overview
+                      </p>
+                      <h3 className="text-xl font-bold mt-1">
+                        Sample Analysis
+                      </h3>
+                    </div>
+
+                    <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-blue-50 text-blue-600">
+                      Example
+                    </span>
+
+                  </div>
+
+                  {[
+                    ["Hemoglobin", "14.2", "g/dL", "Normal"],
+                    ["WBC", "7.8", "×10⁹/L", "Normal"],
+                    ["Platelets", "245", "×10⁹/L", "Normal"],
+                    ["MCV", "89", "fL", "Normal"],
+                  ].map((row, index) => (
+
+                    <div
+                      key={index}
+                      className="py-4 border-b border-slate-100 last:border-0"
+                    >
+
+                      <div className="flex items-center justify-between mb-2">
+
+                        <span className="text-sm font-semibold text-slate-700">
+                          {row[0]}
+                        </span>
+
+                        <span className="text-xs font-semibold text-emerald-600">
+                          {row[3]}
+                        </span>
+
+                      </div>
+
+                      <div className="flex items-end justify-between gap-4">
+
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-lg font-bold">
+                            {row[1]}
+                          </span>
+                          <span className="text-xs text-slate-400">
+                            {row[2]}
+                          </span>
+                        </div>
+
+                        <div className="flex-1 max-w-[170px]">
+                          <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div
+                              className="h-full rounded-full bg-gradient-to-r from-blue-500 to-teal-400"
+                              style={{ width: `${65 + index * 6}%` }}
+                            />
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  ))}
+
+                </div>
+
+              </div>
+
+            </Reveal>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          SERVICES
+      ========================================================= */}
+      <section className="py-24 bg-white">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="max-w-2xl mb-12">
+
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-[0.18em]">
+              Diagnostic Services
+            </span>
+
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
+              More than just a CBC.
+            </h2>
+
+            <p className="text-slate-500 text-lg mt-4">
+              Explore common laboratory tests and learn what they measure,
+              why they are ordered, and how to prepare.
+            </p>
+
+          </div>
+
+
+          {/* Featured CBC */}
+          {cbcService && (
+            <Reveal>
+
+              <button
+                onClick={() => navigate("service", cbcService.slug)}
+                className="w-full text-left group relative overflow-hidden rounded-[2rem] bg-slate-950 text-white p-7 sm:p-10 mb-6"
+              >
+
+                <div className="absolute -right-24 -top-24 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute -left-20 -bottom-24 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl" />
+
+                <div className="relative flex flex-col lg:flex-row lg:items-center gap-7">
+
+                  <div className="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                    <Droplet className="w-8 h-8 text-white" />
+                  </div>
+
+                  <div className="flex-1">
+
+                    <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-2">
+                      Featured Test
+                    </span>
+
+                    <h3 className="text-2xl sm:text-3xl font-bold">
+                      {cbcService.name}
+                    </h3>
+
+                    <p className="text-slate-400 mt-2 max-w-2xl">
+                      {cbcService.desc}
+                    </p>
+
+                  </div>
+
+                  <span className="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-5 py-3 rounded-xl group-hover:bg-blue-500 group-hover:text-white transition-all">
+                    Explore
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+
+                </div>
+
+              </button>
+
+            </Reveal>
+          )}
+
+
+          {/* Other services */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            {otherServices.map((s, i) => {
+
               const Icon = s.icon;
               const accent = ACCENTS[i % ACCENTS.length];
+
               return (
-                <Reveal key={i} delay={i * 80}>
-                  <div className="text-center relative">
-                    <div className="w-16 h-16 rounded-full bg-white border-4 border-slate-100 flex items-center justify-center mx-auto mb-4 relative z-10 shadow-md">
-                      <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${accent.grad} flex items-center justify-center`}>
-                        <Icon className="w-5 h-5 text-white" />
+                <Reveal key={s.slug} delay={i * 60}>
+
+                  <TiltCard>
+
+                    <button
+                      onClick={() => navigate("service", s.slug)}
+                      className="group text-left w-full h-full bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-200 hover:shadow-xl transition-all duration-300"
+                    >
+
+                      <div
+                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${accent.grad} flex items-center justify-center mb-5`}
+                      >
+                        <Icon className="w-6 h-6 text-white" />
                       </div>
-                    </div>
-                    <div className="text-xs font-bold text-blue-600 mb-1 tracking-wide">STEP {i + 1}</div>
-                    <h3 className="font-semibold text-slate-800 mb-2">{s.title}</h3>
-                    <p className="text-sm text-slate-500">{s.desc}</p>
-                  </div>
+
+                      <h3 className="font-bold text-lg text-slate-800">
+                        {s.name}
+                      </h3>
+
+                      <p className="text-sm text-slate-500 mt-2 leading-relaxed">
+                        {s.desc}
+                      </p>
+
+                      <span
+                        className={`mt-5 inline-flex items-center gap-1 text-sm font-semibold ${accent.text}`}
+                      >
+                        Learn more
+                        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </span>
+
+                    </button>
+
+                  </TiltCard>
+
                 </Reveal>
               );
             })}
+
           </div>
+
         </div>
+
       </section>
 
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-            <div>
-              <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">Health Articles</span>
-              <h2 className="text-3xl font-bold text-slate-900 mt-2">From Our Blog</h2>
-            </div>
-            <button onClick={() => navigate("blog")} className="text-sm font-semibold text-blue-600 inline-flex items-center gap-1">
-              View All Articles <ChevronRight className="w-4 h-4" />
-            </button>
+
+      {/* =========================================================
+          HOW IT WORKS
+      ========================================================= */}
+      <section className="py-24 bg-slate-50">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="text-center max-w-2xl mx-auto mb-14">
+
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-[0.18em]">
+              Simple Process
+            </span>
+
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
+              From report to understanding.
+            </h2>
+
+            <p className="text-slate-500 text-lg mt-4">
+              A simple workflow designed to make laboratory reports easier
+              to understand.
+            </p>
+
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recentPosts.map((p, i) => (
-              <Reveal key={p.id} delay={i * 60}>
-                <TiltCard>
-                  <button onClick={() => navigate("post", p.id)} className="text-left w-full h-full bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-slate-100">
-                    <LabImage {...p.image} className="w-full h-40 object-cover" />
-                    <div className="p-5">
-                      <span className="text-xs font-semibold text-teal-600">{p.cat}</span>
-                      <h3 className="font-semibold text-slate-800 mt-1 mb-2 leading-snug">{p.title}</h3>
-                      <p className="text-sm text-slate-500 mb-3">{p.excerpt}</p>
-                      <span className="text-sm text-blue-600 font-medium inline-flex items-center gap-1">Read more <ChevronRight className="w-3.5 h-3.5" /></span>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            {STEPS.map((s, i) => {
+
+              const Icon = s.icon;
+              const accent = ACCENTS[i % ACCENTS.length];
+
+              return (
+                <Reveal key={i} delay={i * 80}>
+
+                  <div className="relative bg-white rounded-2xl border border-slate-200 p-6 h-full">
+
+                    <div className="flex items-center justify-between mb-6">
+
+                      <div
+                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${accent.grad} flex items-center justify-center`}
+                      >
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+
+                      <span className="text-4xl font-black text-slate-100">
+                        0{i + 1}
+                      </span>
+
                     </div>
+
+                    <h3 className="font-bold text-lg text-slate-800">
+                      {s.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-500 mt-2 leading-relaxed">
+                      {s.desc}
+                    </p>
+
+                  </div>
+
+                </Reveal>
+              );
+            })}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          STATS
+      ========================================================= */}
+      <section className="py-20 bg-slate-950 text-white">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+            {STATS.map((s, i) => (
+
+              <div
+                key={i}
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 sm:p-8"
+              >
+                <StatCounter
+                  value={s.value}
+                  suffix={s.suffix}
+                  label={s.label}
+                />
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          BLOG
+      ========================================================= */}
+      <section className="py-24 bg-white">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-12">
+
+            <div>
+
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-[0.18em]">
+                Health Resources
+              </span>
+
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
+                Learn before you worry.
+              </h2>
+
+              <p className="text-slate-500 mt-3 max-w-xl">
+                Simple educational articles about blood tests, laboratory
+                results, and common health topics.
+              </p>
+
+            </div>
+
+            <button
+              onClick={() => navigate("blog")}
+              className="inline-flex items-center gap-2 text-sm font-bold text-blue-600"
+            >
+              View all articles
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+          </div>
+
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {recentPosts.map((p, i) => (
+
+              <Reveal key={p.id} delay={i * 60}>
+
+                <TiltCard>
+
+                  <button
+                    onClick={() => navigate("post", p.id)}
+                    className="text-left w-full h-full bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl hover:border-blue-100 transition-all"
+                  >
+
+                    <LabImage
+                      {...p.image}
+                      className="w-full h-48 object-cover"
+                    />
+
+                    <div className="p-6">
+
+                      <span className="text-xs font-bold text-blue-600 uppercase tracking-wide">
+                        {p.cat}
+                      </span>
+
+                      <h3 className="font-bold text-lg text-slate-800 mt-2 leading-snug">
+                        {p.title}
+                      </h3>
+
+                      <p className="text-sm text-slate-500 mt-3 leading-relaxed">
+                        {p.excerpt}
+                      </p>
+
+                      <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                        Read article
+                        <ChevronRight className="w-4 h-4" />
+                      </span>
+
+                    </div>
+
                   </button>
+
                 </TiltCard>
+
               </Reveal>
             ))}
+
           </div>
+
         </div>
+
       </section>
 
-      <section className="py-16 relative overflow-hidden bg-gradient-to-br from-blue-700 via-violet-600 to-teal-600">
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 lg:grid-cols-4 gap-5">
-          {STATS.map((s, i) => (
-            <div key={i} className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6">
-              <StatCounter value={s.value} suffix={s.suffix} label={s.label} />
-            </div>
-          ))}
+
+      {/* =========================================================
+          FAQ
+      ========================================================= */}
+      <section className="py-24 bg-slate-50">
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="text-center mb-12">
+
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-[0.18em]">
+              Common Questions
+            </span>
+
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-3">
+              Questions, answered simply.
+            </h2>
+
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+
+            {FAQS.map((faq, i) => (
+
+              <div
+                key={i}
+                className="bg-white rounded-2xl border border-slate-200 p-6"
+              >
+
+                <div className="flex gap-3">
+
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-bold text-blue-600">
+                      ?
+                    </span>
+                  </div>
+
+                  <div>
+
+                    <h3 className="font-bold text-slate-800">
+                      {faq.q}
+                    </h3>
+
+                    <p className="text-sm text-slate-500 leading-relaxed mt-3">
+                      {faq.a}
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            ))}
+
+          </div>
+
         </div>
+
       </section>
+
+
+      {/* =========================================================
+          FINAL CTA
+      ========================================================= */}
+      <section className="py-24 bg-white">
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-blue-600 via-violet-600 to-teal-500 p-8 sm:p-12 lg:p-16 text-white">
+
+            <div className="absolute -right-32 -top-32 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+            <div className="absolute -left-24 -bottom-32 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
+
+            <div className="relative max-w-3xl">
+
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white/80">
+                <ShieldCheck className="w-4 h-4" />
+                Start with your CBC
+              </span>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mt-4 leading-tight">
+                Stop staring at numbers you don't understand.
+              </h2>
+
+              <p className="text-white/80 text-base sm:text-lg mt-5 max-w-2xl leading-relaxed">
+                Use the CBC Report Analyzer to organize your results and
+                understand the basics in a clearer way.
+              </p>
+
+              <button
+                onClick={() => navigate("cbc")}
+                className="mt-8 inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-7 py-4 rounded-xl hover:bg-slate-100 transition-all shadow-xl"
+              >
+                Check My CBC Report
+                <ArrowRight className="w-5 h-5" />
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          MEDICAL DISCLAIMER
+      ========================================================= */}
+      <section className="pb-12 bg-white">
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+
+          <div className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 mb-3">
+            <AlertTriangle className="w-4 h-4" />
+            Important
+          </div>
+
+          <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            CBC Lab Analyser is designed for educational and informational
+            purposes. It does not provide a medical diagnosis and should not
+            replace advice from a qualified healthcare professional. Always
+            review laboratory results with your doctor or healthcare provider,
+            especially when you have symptoms or abnormal results.
+          </p>
+
+        </div>
+
+      </section>
+
     </div>
   );
 }
