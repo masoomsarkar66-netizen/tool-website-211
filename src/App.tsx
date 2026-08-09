@@ -1257,13 +1257,28 @@ export default function App() {
     medicalSpecialty: "Pathology",
   });
 
-  const navigate = (p, param) => {
-    setPage(p);
-    setParams(param ?? null);
-    setMenuOpen(false);
-    window.scrollTo(0, 0);
-  };
+ const navigate = (p, param) => {
+  setPage(p);
+  setParams(param ?? null);
+  setMenuOpen(false);
+  window.scrollTo(0, 0);
 
+  let path = "/";
+
+  if (p === "home") path = "/";
+  else if (p === "cbc") path = "/cbc";
+  else if (p === "blog") path = "/blog";
+  else if (p === "post") path = `/blog/${param}`;
+  else if (p === "service") path = `/services/${param}`;
+  else if (p === "about") path = "/about";
+  else if (p === "faq") path = "/faq";
+  else if (p === "contact") path = "/contact";
+  else if (p === "disclaimer") path = "/disclaimer";
+  else if (p === "privacy") path = "/privacy";
+  else if (p === "terms") path = "/terms";
+
+  window.history.pushState({}, "", path);
+};
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
       <style>{`
