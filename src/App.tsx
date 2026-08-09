@@ -1243,8 +1243,35 @@ function Footer({ navigate }) {
 }
 
 export default function App() {
-  const [page, setPage] = useState("home");
-  const [params, setParams] = useState(null);
+  const getPageFromURL = () => {
+    const path = window.location.pathname;
+
+    if (path === "/") return "home";
+    if (path === "/cbc") return "cbc";
+    if (path === "/blog") return "blog";
+    if (path.startsWith("/blog/")) return "post";
+    if (path.startsWith("/services/")) return "service";
+    if (path === "/about") return "about";
+    if (path === "/faq") return "faq";
+    if (path === "/contact") return "contact";
+    if (path === "/disclaimer") return "disclaimer";
+    if (path === "/privacy") return "privacy";
+    if (path === "/terms") return "terms";
+
+    return "home";
+  };
+
+  const getParamFromURL = () => {
+    const parts = window.location.pathname.split("/").filter(Boolean);
+
+    if (parts[0] === "blog" && parts[1]) return parts[1];
+    if (parts[0] === "services" && parts[1]) return parts[1];
+
+    return null;
+  };
+
+  const [page, setPage] = useState(getPageFromURL);
+  const [params, setParams] = useState(getParamFromURL);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useJsonLd("schema-org", {
