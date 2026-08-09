@@ -1952,68 +1952,67 @@ function AboutPage() {
       </section>
 
       {/* TEAM */}
-      <section className="py-20 sm:py-24 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+   <section className="py-24 bg-slate-50">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+    <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+      <div>
+        <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
+          Our Team
+        </span>
 
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
-                Our Team
-              </span>
+        <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
+          Built by healthcare & technology expertise
+        </h2>
+      </div>
 
-              <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
-                Experienced people behind the service
-              </h2>
+      <p className="max-w-xl text-slate-500 leading-7">
+        Combining Medical Laboratory Technology, healthcare knowledge,
+        artificial intelligence, and modern digital tools to make
+        laboratory information easier to understand.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-3 gap-6">
+
+      {team.map((member) => (
+        <div
+          key={member.name}
+          className="group bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+        >
+
+          <div className="h-2 bg-gradient-to-r from-blue-600 via-violet-600 to-teal-500" />
+
+          <div className="p-7">
+
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center text-white text-xl font-bold shadow-lg mb-6">
+              {member.initials}
             </div>
 
-            <p className="max-w-xl text-slate-500 leading-7">
-              Our multidisciplinary approach brings together medical,
-              laboratory, and healthcare technology expertise.
+            <p className="text-xs uppercase tracking-wider font-semibold text-blue-600">
+              {member.role}
             </p>
 
-          </div>
+            <h3 className="text-xl font-bold text-slate-900 mt-2">
+              {member.name}
+            </h3>
 
-          <div className="grid md:grid-cols-3 gap-6">
+            <p className="text-sm text-slate-500 mt-2">
+              {member.qualification}
+            </p>
 
-            {team.map((member) => (
-              <div
-                key={member.name}
-                className="group bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
-              >
-
-                <div className="h-2 bg-gradient-to-r from-blue-600 via-violet-600 to-teal-500" />
-
-                <div className="p-7">
-
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-teal-500 flex items-center justify-center text-white text-xl font-bold shadow-lg mb-6">
-                    {member.initials}
-                  </div>
-
-                  <p className="text-xs uppercase tracking-wider font-semibold text-blue-600">
-                    {member.role}
-                  </p>
-
-                  <h3 className="text-xl font-bold text-slate-900 mt-2">
-                    {member.name}
-                  </h3>
-
-                  <p className="text-sm text-slate-500 mt-2">
-                    {member.qualification}
-                  </p>
-
-                  <div className="mt-6 pt-5 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400">
-                    <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                    Professional Healthcare Team
-                  </div>
-
-                </div>
-              </div>
-            ))}
+            <div className="mt-6 pt-5 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400">
+              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              Healthcare & Technology
+            </div>
 
           </div>
         </div>
-      </section>
+      ))}
+
+    </div>
+  </div>
+</section>
 
       {/* FINAL CTA */}
       <section className="py-20">
