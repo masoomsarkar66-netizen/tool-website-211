@@ -447,15 +447,14 @@ function HomePage({ navigate }) {
                   Smart CBC Report Analysis
                 </span>
               </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.02] mb-7">
-                Your Blood Report.
-                <br />
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
-                  Finally Explained.
-                </span>
-              </h1>
-
+<h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.02] mb-7">
+  CBC Report Analyzer.
+  <br />
+  <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
+    Your Blood Report, Explained.
+  </span>
+</h1>
+             
               <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-2xl mb-9">
                 Upload your CBC report and understand important blood
                 parameters in clear, simple language — without getting lost
