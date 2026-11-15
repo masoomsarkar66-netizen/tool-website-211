@@ -2383,7 +2383,7 @@ export default function App() {
       `}</style>
       <ScrollProgress />
       <NavBar page={page} navigate={navigate} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <main key={`${page}-${params ?? ""}`} className="animate-page-in">
+      <main key={`${page}-${params ?? ""}`}>
         {page === "home" && <HomePage navigate={navigate} />}
         {page === "cbc" && <CBCTool />}
         {page === "service" && <ServicePage slug={params} navigate={navigate} />}
